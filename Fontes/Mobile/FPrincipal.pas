@@ -31,6 +31,8 @@ type
     imgPedidoMin: TImage;
     imgTX: TImage;
     procedure FormShow(Sender: TObject);
+    procedure lvMercadoItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
   private
     procedure AddMercadoLv(id_mercado: Integer; nome, endereco: string; taxa, valorMin: Double);
     procedure listarMercado;
@@ -44,6 +46,9 @@ var
   frmPrincipal: TfrmPrincipal;
 
 implementation
+
+uses
+  FMercado;
 
 {$R *.fmx}
 
@@ -97,6 +102,14 @@ begin
   AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
   AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
   AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
+end;
+
+procedure TfrmPrincipal.lvMercadoItemClick(const Sender: TObject; const AItem: TListViewItem);
+begin
+  if not Assigned(frmMercado) then
+    Application.CreateForm(TfrmMercado, frmMercado);
+
+  frmMercado.Show;
 end;
 
 end.

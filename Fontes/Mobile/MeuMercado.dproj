@@ -5,7 +5,7 @@
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Android</Platform>
         <TargetedPlatforms>33817</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>MeuMercado.dpr</MainSource>
@@ -219,6 +219,8 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -227,6 +229,8 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
+        <VerInfo_Build>1</VerInfo_Build>
+        <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
         <BT_BuildType>AppStore</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
@@ -243,6 +247,19 @@
         </DCCReference>
         <DCCReference Include="FPrincipal.pas">
             <Form>frmPrincipal</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="FMercado.pas">
+            <Form>frmMercado</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Frames\Frame.ProdutoCard.pas">
+            <Form>FrameProdutoCard</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="FSplash.pas">
+            <Form>frmSplash</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -503,8 +520,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Configuration="Debug" Class="AndroidGDBServer">
+                <DeployFile LocalName="Android\Debug\classes.dex" Configuration="Debug" Class="AndroidClassesDexFile">
                     <Platform Name="Android">
+                        <RemoteName>classes.dex</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -525,9 +543,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Debug\classes.dex" Configuration="Debug" Class="AndroidClassesDexFile">
+                <DeployFile LocalName="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Configuration="Debug" Class="AndroidGDBServer">
                     <Platform Name="Android">
-                        <RemoteName>classes.dex</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

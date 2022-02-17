@@ -4,7 +4,7 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'"/>
+        <DeviceId Condition="'$(Platform)'=='Android'">RQ8M90LKDRH</DeviceId>
         <DeviceId Condition="'$(Platform)'=='Android64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimulator'">iPhone5</DeviceId>
@@ -358,10 +358,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MeuMercado\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>gdbserver</RemoteName>
-            <DeployClass>AndroidGDBServer</DeployClass>
+        <DeployFile Include="Android\Debug\classes.dex" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MeuMercado\classes\</RemoteDir>
+            <RemoteName>classes.dex</RemoteName>
+            <DeployClass>AndroidClassesDexFile</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -394,10 +394,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="Android\Debug\classes.dex" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MeuMercado\classes\</RemoteDir>
-            <RemoteName>classes.dex</RemoteName>
-            <DeployClass>AndroidClassesDexFile</DeployClass>
+        <DeployFile Include="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MeuMercado\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>gdbserver</RemoteName>
+            <DeployClass>AndroidGDBServer</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
