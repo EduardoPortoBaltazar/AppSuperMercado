@@ -38,6 +38,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure lbCategoriaItemClick(const Sender: TCustomListBox;
       const Item: TListBoxItem);
+    procedure lbProdutosItemClick(const Sender: TCustomListBox;
+      const Item: TListBoxItem);
   private
     procedure SelecionarCategoria(AItemListBox: TListBoxItem);
     { Private declarations }
@@ -56,7 +58,7 @@ var
 implementation
 
 uses
-  FPrincipal, Frame.ProdutoCard;
+  FPrincipal, Frame.ProdutoCard, FProduto;
 
 {$R *.fmx}
 
@@ -137,7 +139,7 @@ begin
       LItem := lbCategoria.ItemByIndex(i);
       rect                := TRectangle(LItem.Components[0]);
       rect.Fill.Color     := $FFE2E2E2;     
-      
+
       lbl                 := TLabel(rect.Components[0]);          
       lbl.FontColor       := $FF3A3A3A;
     end;     
@@ -160,6 +162,15 @@ procedure TfrmMercado.lbCategoriaItemClick(const Sender: TCustomListBox;
   const Item: TListBoxItem);
 begin
  SelecionarCategoria(Item);
+end;
+
+procedure TfrmMercado.lbProdutosItemClick(const Sender: TCustomListBox;
+  const Item: TListBoxItem);
+begin
+  if not Assigned(FrmProduto) then
+    Application.CreateForm(TFrmProduto, FrmProduto);
+
+  FrmProduto.Show;
 end;
 
 procedure TfrmMercado.listarCategorias;

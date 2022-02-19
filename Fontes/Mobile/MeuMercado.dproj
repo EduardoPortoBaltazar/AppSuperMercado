@@ -5,7 +5,7 @@
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Android</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>33817</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>MeuMercado.dpr</MainSource>
@@ -260,6 +260,10 @@
         </DCCReference>
         <DCCReference Include="FSplash.pas">
             <Form>frmSplash</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="FProduto.pas">
+            <Form>FrmProduto</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
