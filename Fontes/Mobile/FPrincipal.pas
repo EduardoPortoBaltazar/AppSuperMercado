@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.Layouts, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView;
+  FMX.ListView, FMX.Ani;
 
 type
   TfrmPrincipal = class(TForm)
@@ -22,20 +22,24 @@ type
     Image3: TImage;
     Button1: TButton;
     lytSwitch: TLayout;
-    Rectangle1: TRectangle;
     RectSwitch: TRectangle;
-    Label2: TLabel;
-    Label3: TLabel;
+    RectSelecao: TRectangle;
+    lblCasa: TLabel;
+    lblRetira: TLabel;
     lvMercado: TListView;
     imgShop: TImage;
     imgPedidoMin: TImage;
     imgTX: TImage;
+    AnimationFiltro: TFloatAnimation;
     procedure FormShow(Sender: TObject);
     procedure lvMercadoItemClick(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure lblCasaClick(Sender: TObject);
   private
     procedure AddMercadoLv(id_mercado: Integer; nome, endereco: string; taxa, valorMin: Double);
     procedure listarMercado;
+    procedure SelecionarEntrega(ALabel: TLabel);
+
 
     { Private declarations }
   public
@@ -95,6 +99,11 @@ begin
  listarMercado;
 end;
 
+procedure TfrmPrincipal.lblCasaClick(Sender: TObject);
+begin
+  SelecionarEntrega(TLabel(Sender));
+end;
+
 procedure TfrmPrincipal.listarMercado;
 begin
   AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
@@ -110,6 +119,18 @@ begin
     Application.CreateForm(TfrmMercado, frmMercado);
 
   frmMercado.Show;
+end;
+
+procedure TfrmPrincipal.SelecionarEntrega(ALabel: TLabel);
+begin
+  lblCasa.FontColor   := $FFEEEAEA;
+  lblRetira.FontColor := $FFEEEAEA;
+
+  ALabel.FontColor    := $FFE8D2D2;
+
+  RectSelecao.Position.X := ALabel.Position.x;
+  AnimationFiltro.Start;
+
 end;
 
 end.
