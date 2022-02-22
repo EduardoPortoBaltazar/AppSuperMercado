@@ -123,14 +123,13 @@ end;
 
 procedure TfrmPrincipal.SelecionarEntrega(ALabel: TLabel);
 begin
-  lblCasa.FontColor   := $FFEEEAEA;
-  lblRetira.FontColor := $FFEEEAEA;
+  lblCasa.FontColor   := $FF8F8F8F;
+  lblRetira.FontColor := $FF8F8F8F;
 
-  ALabel.FontColor    := $FFE8D2D2;
+  ALabel.FontColor    := $FFFFFFFF;
 
-  RectSelecao.Position.X := ALabel.Position.x;
+  AnimationFiltro.StopValue := ALabel.Position.x;
   AnimationFiltro.Start;
-
 end;
 
 end.

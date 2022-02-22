@@ -8,7 +8,8 @@ uses
   FMercado in 'FMercado.pas' {frmMercado},
   Frame.ProdutoCard in 'Frames\Frame.ProdutoCard.pas' {FrameProdutoCard: TFrame},
   FSplash in 'FSplash.pas' {frmSplash},
-  FProduto in 'FProduto.pas' {FrmProduto};
+  FProduto in 'FProduto.pas' {FrmProduto},
+  FCarrinho in 'FCarrinho.pas' {Form1};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmSplash, frmSplash);
   Application.CreateForm(TFrmProduto, FrmProduto);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
