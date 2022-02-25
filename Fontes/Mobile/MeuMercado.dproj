@@ -5,7 +5,7 @@
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Android</Platform>
         <TargetedPlatforms>33817</TargetedPlatforms>
         <AppType>Application</AppType>
         <MainSource>MeuMercado.dpr</MainSource>
@@ -267,8 +267,13 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="FCarrinho.pas">
-            <Form>Form1</Form>
+            <Form>frmCarrinho</Form>
             <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Frames\Frame.Produto.Lista.pas">
+            <Form>frameProdutoLista</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

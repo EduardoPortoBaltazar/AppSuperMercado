@@ -13,7 +13,7 @@ type
   TfrmPrincipal = class(TForm)
     lytToolBar: TLayout;
     Image1: TImage;
-    Image2: TImage;
+    imgCarrinho: TImage;
     Label1: TLabel;
     lytPesquisa: TLayout;
     StyleBook: TStyleBook;
@@ -35,6 +35,7 @@ type
     procedure lvMercadoItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure lblCasaClick(Sender: TObject);
+    procedure imgCarrinhoClick(Sender: TObject);
   private
     procedure AddMercadoLv(id_mercado: Integer; nome, endereco: string; taxa, valorMin: Double);
     procedure listarMercado;
@@ -52,7 +53,7 @@ var
 implementation
 
 uses
-  FMercado;
+  FMercado, FCarrinho;
 
 {$R *.fmx}
 
@@ -97,6 +98,14 @@ end;
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
  listarMercado;
+end;
+
+procedure TfrmPrincipal.imgCarrinhoClick(Sender: TObject);
+begin
+  if not Assigned(frmCarrinho) then
+     Application.CreateForm(TfrmCarrinho, frmCarrinho);
+
+  frmCarrinho.Show;
 end;
 
 procedure TfrmPrincipal.lblCasaClick(Sender: TObject);

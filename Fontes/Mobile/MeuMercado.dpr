@@ -9,7 +9,8 @@ uses
   Frame.ProdutoCard in 'Frames\Frame.ProdutoCard.pas' {FrameProdutoCard: TFrame},
   FSplash in 'FSplash.pas' {frmSplash},
   FProduto in 'FProduto.pas' {FrmProduto},
-  FCarrinho in 'FCarrinho.pas' {Form1};
+  FCarrinho in 'FCarrinho.pas' {frmCarrinho},
+  Frame.Produto.Lista in 'Frames\Frame.Produto.Lista.pas' {frameProdutoLista: TFrame};
 
 {$R *.res}
 
@@ -20,6 +21,6 @@ begin
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmSplash, frmSplash);
   Application.CreateForm(TFrmProduto, FrmProduto);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmCarrinho, frmCarrinho);
   Application.Run;
 end.
