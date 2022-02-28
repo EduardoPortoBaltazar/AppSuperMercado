@@ -11,7 +11,8 @@ uses
   FProduto in 'FProduto.pas' {FrmProduto},
   FCarrinho in 'FCarrinho.pas' {frmCarrinho},
   Frame.Produto.Lista in 'Frames\Frame.Produto.Lista.pas' {frameProdutoLista: TFrame},
-  FPedido in 'FPedido.pas' {frmPedidos};
+  FPedido in 'FPedido.pas' {frmPedidos},
+  FPedidoDetalhe in 'FPedidoDetalhe.pas' {frmPedidoDetalhe};
 
 {$R *.res}
 
@@ -24,5 +25,6 @@ begin
   Application.CreateForm(TFrmProduto, FrmProduto);
   Application.CreateForm(TfrmCarrinho, frmCarrinho);
   Application.CreateForm(TfrmPedidos, frmPedidos);
+  Application.CreateForm(TfrmPedidoDetalhe, frmPedidoDetalhe);
   Application.Run;
 end.

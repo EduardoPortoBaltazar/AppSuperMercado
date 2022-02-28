@@ -16,6 +16,8 @@ type
     lvPedidos: TListView;
     imgShop: TImage;
     procedure FormShow(Sender: TObject);
+    procedure lvPedidosItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
   private
     procedure AddPedidoLv( id_pedido, qtd_itens: Integer;
                                     nome, endereco, dt_pedido: string;
@@ -34,7 +36,7 @@ var
 implementation
 
 uses
-  FPrincipal;
+  FPrincipal, FPedidoDetalhe;
 
 {$R *.fmx}
 
@@ -89,6 +91,14 @@ begin
   AddPedidoLv(666, 2, 'Golden', 'Rua do cordeiro', '28/02/2022', 22);
   AddPedidoLv(666, 2, 'Golden', 'Rua do cordeiro', '28/02/2022', 22);
   AddPedidoLv(666, 2, 'Golden', 'Rua do cordeiro', '28/02/2022', 22);
+end;
+
+procedure TfrmPedidos.lvPedidosItemClick(const Sender: TObject; const AItem: TListViewItem);
+begin
+  if not Assigned(frmPedidoDetalhe) then
+    Application.CreateForm(TfrmPedidoDetalhe, frmPedidoDetalhe);
+
+  frmPedidoDetalhe.Show;
 end;
 
 end.

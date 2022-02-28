@@ -1,8 +1,8 @@
-object frmPedidos: TfrmPedidos
+object frmPedidoDetalhe: TfrmPedidoDetalhe
   Left = 0
   Top = 0
-  Caption = 'Meus Pedidos'
-  ClientHeight = 480
+  Caption = 'Detalhes do Pedido'
+  ClientHeight = 489
   ClientWidth = 300
   Fill.Kind = Solid
   FormFactor.Width = 320
@@ -26,7 +26,7 @@ object frmPedidos: TfrmPedidos
       TextSettings.Font.Family = 'Roboto'
       TextSettings.Font.Size = 22.000000000000000000
       TextSettings.HorzAlign = Center
-      Text = 'Meus Pedidos'
+      Text = 'Pedido #666'
       TabOrder = 0
     end
     object imgVoltar: TImage
@@ -229,181 +229,231 @@ object frmPedidos: TfrmPedidos
       Size.PlatformDefault = False
     end
   end
-  object lvPedidos: TListView
-    ItemAppearanceClassName = 'TDynamicAppearance'
-    ItemEditAppearanceClassName = 'TDynamicAppearance'
-    HeaderAppearanceClassName = 'TListHeaderObjects'
-    FooterAppearanceClassName = 'TListHeaderObjects'
-    ItemSpaces.Left = 0.000000000000000000
-    ItemSpaces.Right = 0.000000000000000000
+  object lytEndereco: TLayout
+    Align = Top
+    Position.Y = 50.000000000000000000
+    Size.Width = 300.000000000000000000
+    Size.Height = 66.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object lblEndereco: TLabel
+      Align = Top
+      Cursor = crHandPoint
+      StyledSettings = [Style]
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 295.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.FontColor = xFF674848
+      TextSettings.VertAlign = Leading
+      Text = 'Supermercado Extra'
+      TabOrder = 1
+    end
+    object lblCompraMin: TLabel
+      Cursor = crHandPoint
+      StyledSettings = [Style]
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Position.X = 7.000000000000000000
+      Position.Y = 32.000000000000000000
+      Size.Width = 250.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.FontColor = xFFEEEAEA
+      TextSettings.VertAlign = Leading
+      Text = 'Estrada da Fortuna 379'
+      TabOrder = 0
+    end
+  end
+  object lblProdutos: TListBox
     Align = Client
     Size.Width = 300.000000000000000000
-    Size.Height = 430.000000000000000000
+    Size.Height = 205.000000000000000000
     Size.PlatformDefault = False
+    StyleLookup = 'transparentlistboxstyle'
     TabOrder = 3
-    ItemAppearance.ItemHeight = 120
-    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
-      item
-        AppearanceObjectName = 'txtNome'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.TextAlign = Leading
-        Appearance.TextColor = xFF8F8F8F
-        Appearance.Width = 226.000000000000000000
-        Appearance.Height = 17.000000000000000000
-        Appearance.PlaceOffset.X = 47.000000000000000000
-        Appearance.PlaceOffset.Y = 5.000000000000000000
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 300.000000000000000000
+    Viewport.Height = 205.000000000000000000
+  end
+  object Rectangle1: TRectangle
+    Align = Bottom
+    Fill.Color = claWhite
+    Position.Y = 321.000000000000000000
+    Sides = [Top]
+    Size.Width = 300.000000000000000000
+    Size.Height = 168.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFFE7E6E6
+    object Layout1: TLayout
+      Align = Top
+      Size.Width = 300.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object Label1: TLabel
+        Align = Left
+        Cursor = crHandPoint
+        StyledSettings = [Style]
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 90.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.FontColor = xFFDCD6D6
+        TextSettings.VertAlign = Leading
+        Text = 'Sub.Total'
+        TabOrder = 1
       end
-      item
-        AppearanceObjectName = 'imgShop'
-        AppearanceClassName = 'TImageObjectAppearance'
-        Appearance.Width = 33.000000000000000000
-        Appearance.Height = 33.000000000000000000
-        Appearance.PlaceOffset.X = 8.000000000000000000
-        Appearance.PlaceOffset.Y = 8.000000000000000000
+      object Label2: TLabel
+        Align = Right
+        Cursor = crHandPoint
+        StyledSettings = [Style]
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Position.X = 210.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 90.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.FontColor = xFFDCD6D6
+        TextSettings.HorzAlign = Trailing
+        TextSettings.VertAlign = Leading
+        Text = 'R$ 50,00'
+        TabOrder = 0
       end
-      item
-        AppearanceObjectName = 'txtEndereco'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.TextAlign = Leading
-        Appearance.TextColor = xFFBDAFAF
-        Appearance.Width = 180.000000000000000000
-        Appearance.Height = 17.000000000000000000
-        Appearance.PlaceOffset.X = 48.000000000000000000
-        Appearance.PlaceOffset.Y = 48.000000000000000000
+    end
+    object Layout2: TLayout
+      Align = Top
+      Position.Y = 66.000000000000000000
+      Size.Width = 300.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object Label3: TLabel
+        Align = Left
+        Cursor = crHandPoint
+        StyledSettings = [Style]
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 90.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.FontColor = xFFDCD6D6
+        TextSettings.VertAlign = Leading
+        Text = 'Total'
+        TabOrder = 1
       end
-      item
-        AppearanceObjectName = 'txtPedido'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.TextAlign = Leading
-        Appearance.TextColor = xFF31BA01
-        Appearance.Width = 180.000000000000000000
-        Appearance.Height = 17.000000000000000000
-        Appearance.PlaceOffset.X = 47.000000000000000000
-        Appearance.PlaceOffset.Y = 26.000000000000000000
+      object Label4: TLabel
+        Align = Right
+        Cursor = crHandPoint
+        StyledSettings = [Style]
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Position.X = 210.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 90.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.FontColor = xFFDCD6D6
+        TextSettings.HorzAlign = Trailing
+        TextSettings.VertAlign = Leading
+        Text = 'R$ 60,00'
+        TabOrder = 0
       end
-      item
-        AppearanceObjectName = 'txtValor'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.TextAlign = Leading
-        Appearance.TextColor = xFFBDAFAF
-        Appearance.Width = 180.000000000000000000
-        Appearance.Height = 17.000000000000000000
-        Appearance.PlaceOffset.X = 48.000000000000000000
-        Appearance.PlaceOffset.Y = 70.000000000000000000
+    end
+    object Layout3: TLayout
+      Align = Top
+      Position.Y = 33.000000000000000000
+      Size.Width = 300.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Label5: TLabel
+        Align = Left
+        Cursor = crHandPoint
+        StyledSettings = [Style]
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 90.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.FontColor = xFFDCD6D6
+        TextSettings.VertAlign = Leading
+        Text = 'Taxa de Entrega'
+        TabOrder = 1
       end
-      item
-        AppearanceObjectName = 'txtData'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.TextAlign = Leading
-        Appearance.TextColor = xFFBDAFAF
-        Appearance.Width = 177.000000000000000000
-        Appearance.Height = 17.000000000000000000
-        Appearance.PlaceOffset.X = 48.000000000000000000
-        Appearance.PlaceOffset.Y = 91.000000000000000000
-      end>
-    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
-      item
-        AppearanceObjectName = 'Text1'
-        AppearanceClassName = 'TTextObjectAppearance'
-      end>
-    ItemAppearanceObjects.FooterObjects.Text.Width = 228.000000000000000000
-    ItemAppearanceObjects.FooterObjects.Text.Height = 48.000000000000000000
-    CanSwipeDelete = False
-    OnItemClick = lvPedidosItemClick
-    ShowSelection = False
-    object imgShop: TImage
-      MultiResBitmap.Height = 128
-      MultiResBitmap.Width = 128
-      MultiResBitmap = <
-        item
-          Width = 128
-          Height = 128
-          PNG = {
-            89504E470D0A1A0A0000000D4948445200000080000000800806000000C33E61
-            CB000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            099549444154785EED9D47C82C451786AF39E79C73443167C59C15C484195D89
-            1B71E1C27FE74E0517A2B812316040312E140545C19C3127302BE69C7EF379BA
-            BAAE87B2E74E777577757F53E781973E9F779CE9A93E5575AAEA54CD3CC3300C
-            C3300CC3300CC3300CC3300CC3300CC3300CC3300CC3300CC330668285CAEB18
-            5856B4AA6899E2AFD9E46FD14FA22F443FF31F86660C0EC0433F54B4A9684C0E
-            D9277F89DE10DD2FFA8EFF30144317F87AA2D3444B147FE507ADC175A2CF8BBF
-            0660E1F23A043CF413CB6BAED0DD51068B147F0DC0902DC0EEA2C39C59F0BBE8
-            45D1B7C55FB3CB4AA2ED448B167F39EE10BDE4CCB40CE900A78A367366C14DA2
-            B79C39F36C2DA2E67B70FC3B9D999621BB80E5CA2BFC217ADB9959F0A68840D0
-            A3CB2229433A806E7DFE143144CA85F0FB0EF61C86740063049803648E3940E6
-            0C390A3847B486338B20F0616766C301225F01DF135DEBCCB48CC50172673007
-            18AA0B5852B4A2330D612D1165929CA11C605751CE53C02194C52ECE4CCB105D
-            C062A2F3447AD9F72ED1F7CE6CC47122FF3EC411378BEACE271C2B62091A7E14
-            311D5B07CAEC64919FCA6541E77667366279D131CE2CE07D2E1331259E8C211C
-            6037D1E1CE2C784774BD331BC1C33BDF9905EF8BAE71662D7042DF0DB1FE40E1
-            D7E52CD106CE2CB854841335E50CD1C6CE2CB857F4B433D390BA0B60D56B0F67
-            CEE791F2DA94F5CBABE783F29A820FCBAB8765ED181E2DAF9EBD44495706533B
-            C0B6221DFC7D2C7AD7998D090B3D7C287D123A5BAC03D0FA7DE4CC821544DB38
-            330D291D80EE664F67CE27B6F6836E01E8F7533A009FA5638D580780C7CAAB67
-            1F51B2AE39A5036C295ADD9905E4C5B12A160381E49ACE2CF852F48B3393C067
-            F1991E86717A7DBF09A48651161E52E4B67066FFA47480B0F6D3FFC5AE00AE23
-            D27D65CAFEDFA35B1C1EFEDACE6C0C65F0B833E7432B9084540EB09148379324
-            42BEE2CC2886ECFF3D5DC501403690CE84C2C129B3DE49E500A147D3EFB1261E
-            CB9023004FE8746D1C80B278D299F3D9BBBCF64A0A07A07FD4DECC84C70BCE8C
-            8200695D671630FEFEDA9949F94AA4C7FE38659BE0ED391165E3D94414DBADD4
-            26850384512D9EDE66B66B35D152CE2C18A2F9F7E8CF5E5AB4B233A3A04CC249
-            A0DE5B81BE1D8088762B6716FC5FF48C33A31943F3EFE9B21B001C8032F25076
-            387C6FF4ED00CC6CE9DACF17FCD599D18C2100F484CE173A6753185E3EEFCC02
-            CA2E1C3D754A9B3E6B1ACC6A9D2BF2C335863BA47EEB7E2E861344E4D60399B5
-            CCFFC704942CE8F86CDC1F442C243585EFC6BA80AF48C405310B431AEEE92491
-            7F367CB7CB45BD6C21EBD301D8F4C1E60FA33DC44DF739B35BFAEC0298F933BA
-            A1B7B2ECD30192AE6BCF38BF95D7CEE9B30B3853B4A1330B9E15B50D007712F9
-            212031C51322BDC3A6093B8B7C1A16C117E3F018C2256EF6FDEB402E06BE23DF
-            D5139B3331953E1DE010918E60098E5E7666142C005D20F241250B28573A330A
-            9D1042F0768533A3D0EF4566D2C5E53596ED453A5B887593079CD92D7D760178
-            ADA66DCE1B432CBD004406501BB4F3B7AD0864F57A5818D2339531D03A69C2B2
-            EC8CBE1D80E1958707C8AED818B84FF2E8354C31C7DE3F4115C3540F33784CBD
-            C6C03D84E9EDDC6BAC539110A21D88E15F6CD2CC54748DEA1AFA68C4D12F1EF2
-            DFC801687A3E0E434A3DA3082455D25736DD55BC8AE814115D8A0607784DD434
-            4E394214AEDFE35CB4044D6B2EB37ECC01E8DC029AFE4F9CD93D7D3A007C2AA2
-            B6F9CC5D0A9D5680E65BB70E93E0FE2860D2C8AB60D994E4500ABA4E3048CD3A
-            5D547510D5E2229C8CE6BC4E82270FE94851D85C7B68F1784F6A2F15611AFEDE
-            5853F0507EF788EAFCFF51F4ED003C14A64B096AFC6751283B88C885FF4C5435
-            C4A1F9DC5CC4AC1F570D11BBAEBDAC98E1643814AB825585456BB1BFE82891DE
-            8F40A0C64C9BBF374605DC2BEFCFB93D554359EE8D1ACFBDE9032E20BC37A6AD
-            79CD37A249279F30F3479711DE1B6B023788DACE9C2E90B6C14F5D685E752EBD
-            87C2672E9F268E5AC7BFD31FB37CACFB680F2D0753B6C78B74D7E2C109A8C144
-            F53C5C5A071C84DA15C60B7CF66D221E72D8EC02FFCEE7716F7459FC3BDD07F7
-            8643854CBB371C80D60067F0F7460BC6BD8515917BBA51A483CB5E48E500406D
-            E05894D8D330C820BA5B44E1F8AE614751CC77E081F2F07D1F4D73CD83AB7AB0
-            75E8F2DED820738B888CE9DE49E90040FF769088C2A90B05422054758812134D
-            349D2C3BD781EEE15511E7F3853108CDEF7E2236AED41D5D74796FC06414EF47
-            579284D40E0014F4FF9C3911DFFC52B03CB0AABED8438D23B0E4E42D0A3D6CCA
-            81E697D107053CED4C3E9A79023BE20ABFEAA8E9FADE341789743E40EF8CC101
-            E8171F14119953B8043DCCF2C5CCA451E0D438FA5782318674C40375461C55F0
-            3EBC1FC121F7D3D5BDE1087443644BE920374B07A066C6ACC5CF026C6E65B794
-            27B903C4CEA41933823940E6980364CE586300E60A9866652F6197F748C4CEB1
-            ACE186CCA1B0186002078A1886312BC850AC2BE150078B58493484B13A40DF07
-            48E10C8630576200E6CFAB143697AC9D57BDAEE9F273363039911A2641F46651
-            266AC29DC2ACC8E956E012D15315A226EBFD7357891E1285AF63E246AFDC3183
-            A7F7E40F05B3843A9984D42F26C39261A380CC3107C81C7380CC19EB3C40B8A7
-            60526E1D8B2B7A0D9FE492AAD5395EA397656F1591FF3734360F50139249AB14
-            2670907452F53AFDF00D85750199630E9039732506B8B0BC8670E630295C1EB6
-            7731AF10129E4F6C3140C95C99089AF46B224CEEE85D349C4052954FC76B6226
-            82881FF85DE37D45EC73E4BC836922DF91C9A93A8757DA44D088A1D560A3068B
-            52ECD8D18B4A0B120F1427385BA44F141F25E600D5F020D9DDDCA68B64030C3B
-            7C475DC673A50B203F80DD38A1A8617A9B17369B50C2D7114FE88D26D3BA006A
-            B0EE32482E25B194EB34F1FD7CB9FABD8B937E0C63F02E60AE04815D332D080C
-            CF36E0202A52C1EBC0367892593C6CF278DD99FFC1268226D07721347DFF26A7
-            9084AF1DA292D566AC0EC0D12F7D3901FB107ADF733757186B17006CEC601345
-            97D0BFD6F971AAB00BB85A54F7404ACEF639DA99050BEA6EAC0B58002CEA5465
-            F7B4519D879F15360CCC1C7380CC3107C81C7380CC3107C81C7380CC3107C81C
-            7380CC3107C81C7380CC3107C81C7380CC3107C89C312C07939AC5B12D638274
-            309DD0C98F5DD6FDD936CEFFD547DB73A0E4A4C329F96D00FD33F8C99783C7E0
-            00C6BF64910F405246EC0F3DCD329449CC09A4AD18C201F8926D7F556B16E11C
-            E3A419C13064C222E9D055BFDC91239C41CC8F67188661188661188661188661
-            18866118866118866118866118866118866144306FDE3F12B5D74909EDEBFF00
-            00000049454E44AE426082}
-          FileName = 'E:\workspace\AppSuperMercado\Fontes\Mobile\Images\shop.png'
-        end>
-      Position.X = 24.000000000000000000
-      Position.Y = 340.000000000000000000
-      Visible = False
+      object Label6: TLabel
+        Align = Right
+        Cursor = crHandPoint
+        StyledSettings = [Style]
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Position.X = 210.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 90.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.FontColor = xFFDCD6D6
+        TextSettings.HorzAlign = Trailing
+        TextSettings.VertAlign = Leading
+        Text = 'R$ 10,00'
+        TabOrder = 0
+      end
+    end
+    object Label7: TLabel
+      Align = Top
+      Cursor = crHandPoint
+      StyledSettings = [Style]
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 109.000000000000000000
+      Size.Width = 295.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.FontColor = xFF674848
+      TextSettings.VertAlign = Leading
+      Text = 'Endere'#231'o de Entrega'
+      TabOrder = 2
+    end
+    object Label8: TLabel
+      Align = Top
+      Cursor = crHandPoint
+      StyledSettings = [Style]
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 1.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 131.000000000000000000
+      Size.Width = 295.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.FontColor = xFFD9CBCB
+      TextSettings.VertAlign = Leading
+      Text = 'Estrada da Fortuna 379'
+      TabOrder = 1
     end
   end
 end
