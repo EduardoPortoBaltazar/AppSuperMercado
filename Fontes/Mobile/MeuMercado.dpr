@@ -10,7 +10,8 @@ uses
   FSplash in 'FSplash.pas' {frmSplash},
   FProduto in 'FProduto.pas' {FrmProduto},
   FCarrinho in 'FCarrinho.pas' {frmCarrinho},
-  Frame.Produto.Lista in 'Frames\Frame.Produto.Lista.pas' {frameProdutoLista: TFrame};
+  Frame.Produto.Lista in 'Frames\Frame.Produto.Lista.pas' {frameProdutoLista: TFrame},
+  FPedido in 'FPedido.pas' {frmPedidos};
 
 {$R *.res}
 
@@ -22,5 +23,6 @@ begin
   Application.CreateForm(TfrmSplash, frmSplash);
   Application.CreateForm(TFrmProduto, FrmProduto);
   Application.CreateForm(TfrmCarrinho, frmCarrinho);
+  Application.CreateForm(TfrmPedidos, frmPedidos);
   Application.Run;
 end.

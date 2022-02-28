@@ -12,7 +12,7 @@ uses
 type
   TfrmPrincipal = class(TForm)
     lytToolBar: TLayout;
-    Image1: TImage;
+    imgMenu: TImage;
     imgCarrinho: TImage;
     Label1: TLabel;
     lytPesquisa: TLayout;
@@ -31,11 +31,27 @@ type
     imgPedidoMin: TImage;
     imgTX: TImage;
     AnimationFiltro: TFloatAnimation;
+    rectMenu: TRectangle;
+    imgPerfil: TImage;
+    imgFecharMenu: TImage;
+    lblEndereco: TLabel;
+    Label2: TLabel;
+    rectPedido: TRectangle;
+    lblMeuPedido: TLabel;
+    Rectangle1: TRectangle;
+    Label3: TLabel;
+    rectMenuPedido: TRectangle;
+    Label4: TLabel;
     procedure FormShow(Sender: TObject);
     procedure lvMercadoItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure lblCasaClick(Sender: TObject);
     procedure imgCarrinhoClick(Sender: TObject);
+    procedure imgMenuClick(Sender: TObject);
+    procedure OpenMenu(Ind: Boolean);
+    procedure imgFecharMenuClick(Sender: TObject);
+    procedure rectMenuPedidoClick(Sender: TObject);
+
   private
     procedure AddMercadoLv(id_mercado: Integer; nome, endereco: string; taxa, valorMin: Double);
     procedure listarMercado;
@@ -53,7 +69,7 @@ var
 implementation
 
 uses
-  FMercado, FCarrinho;
+  FMercado, FCarrinho, FPedido;
 
 {$R *.fmx}
 
@@ -93,11 +109,14 @@ begin
   end;
 end;
 
-
-
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
  listarMercado;
+end;
+
+procedure TfrmPrincipal.imgMenuClick(Sender: TObject);
+begin
+  OpenMenu(True);
 end;
 
 procedure TfrmPrincipal.imgCarrinhoClick(Sender: TObject);
@@ -106,6 +125,11 @@ begin
      Application.CreateForm(TfrmCarrinho, frmCarrinho);
 
   frmCarrinho.Show;
+end;
+
+procedure TfrmPrincipal.imgFecharMenuClick(Sender: TObject);
+begin
+  OpenMenu(False);
 end;
 
 procedure TfrmPrincipal.lblCasaClick(Sender: TObject);
@@ -128,6 +152,20 @@ begin
     Application.CreateForm(TfrmMercado, frmMercado);
 
   frmMercado.Show;
+end;
+
+procedure TfrmPrincipal.OpenMenu(Ind: Boolean);
+begin
+  rectMenu.Visible := Ind;
+end;
+
+procedure TfrmPrincipal.rectMenuPedidoClick(Sender: TObject);
+begin
+  if not Assigned(frmPedidos) then
+    Application.CreateForm(TfrmPedidos, frmPedidos);
+
+  OpenMenu(False);
+  frmPedidos.Show;
 end;
 
 procedure TfrmPrincipal.SelecionarEntrega(ALabel: TLabel);
