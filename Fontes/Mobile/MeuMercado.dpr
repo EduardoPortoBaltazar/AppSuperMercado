@@ -14,13 +14,16 @@ uses
   FPedido in 'FPedido.pas' {frmPedidos},
   FPedidoDetalhe in 'FPedidoDetalhe.pas' {frmPedidoDetalhe},
   DataModuloe.Usuario in 'DataModule\DataModuloe.Usuario.pas' {DmUsuario: TDataModule},
-  uLoading in 'Units\uLoading.pas';
+  uLoading in 'Units\uLoading.pas',
+  DataModuloe.Mercado in 'DataModule\DataModuloe.Mercado.pas' {DMMercado: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDmUsuario, DmUsuario);
   Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TDMMercado, DMMercado);
   Application.Run;
 end.

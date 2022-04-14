@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.Layouts, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, FMX.Ani;
+  FMX.ListView, FMX.Ani, uLoading;
 
 type
   TfrmPrincipal = class(TForm)
@@ -18,7 +18,7 @@ type
     lytPesquisa: TLayout;
     StyleBook: TStyleBook;
     rectPesquisa: TRectangle;
-    edtEmailLogin: TEdit;
+    edtBuscar: TEdit;
     Image3: TImage;
     Button1: TButton;
     lytSwitch: TLayout;
@@ -53,14 +53,22 @@ type
     procedure rectMenuPedidoClick(Sender: TObject);
 
   private
+    Find_Retira: string;
+    Find_Entrega: string;
+
     procedure AddMercadoLv(id_mercado: Integer; nome, endereco: string; taxa, valorMin: Double);
     procedure listarMercado;
     procedure SelecionarEntrega(ALabel: TLabel);
+    procedure ThreadEnd(Sender: TObject);
 
 
-    { Private declarations }
   public
-    { Public declarations }
+
+    property ind_Entrega: string read Find_Entrega write Find_Entrega;
+    property ind_Retira: string read Find_Retira write Find_Retira;
+
+
+
   end;
 
 var
@@ -69,7 +77,9 @@ var
 implementation
 
 uses
-  FMercado, FCarrinho, FPedido;
+  FMercado, FCarrinho, FPedido,
+   DataModuloe.Mercado,
+    DataModuloe.Usuario;
 
 {$R *.fmx}
 
@@ -111,7 +121,8 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
- listarMercado;
+  SelecionarEntrega(lblCasa);
+  listarMercado;
 end;
 
 procedure TfrmPrincipal.imgMenuClick(Sender: TObject);
@@ -138,13 +149,60 @@ begin
 end;
 
 procedure TfrmPrincipal.listarMercado;
+var
+  LThread: TThread;
 begin
-  AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
-  AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
-  AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
-  AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
-  AddMercadoLv(1, 'Extra Mercados', 'São Goncalo', 10, 10);
+  TLoading.Show(frmPrincipal, 'Mercado...');
+
+
+  LThread := TThread.CreateAnonymousThread(
+  procedure
+  var
+    i: Integer;
+  begin
+    DMMercado.ListarMercado(edtBuscar.Text, ind_Entrega, ind_Retira);
+
+    lvMercado.BeginUpdate;
+    with DMMercado.TabMercado do
+    begin
+    for I := 0 to DMMercado.TabMercado.RecordCount -1 do
+      begin
+        TThread.Synchronize(TThread.CurrentThread, procedure
+        begin
+        AddMercadoLv(FieldByName('id_mercado').AsInteger,
+                    FieldByName('nome').AsString,
+                    FieldByName('endereco').AsString,
+                    FieldByName('vl_entrega').AsFloat,
+                    FieldByName('vl_compra_min').AsFloat);
+
+        end);
+        Next;
+      end;
+    end;
+  end);
+
+  LThread.OnTerminate := ThreadEnd;
+  LThread.Start;
 end;
+
+procedure TfrmPrincipal.ThreadEnd(Sender: TObject);
+begin
+    TLoading.Hide;
+
+  lvMercado.EndUpdate;
+
+  if Sender is TThread then
+  begin
+    if Assigned(TThread(Sender).FatalException) then
+    begin
+      ShowMessage(Exception(TThread(sender).FatalException).Message);
+      Exit;
+    end;
+  end;
+
+end;
+
+
 
 procedure TfrmPrincipal.lvMercadoItemClick(const Sender: TObject; const AItem: TListViewItem);
 begin
@@ -174,6 +232,15 @@ begin
   lblRetira.FontColor := $FF8F8F8F;
 
   ALabel.FontColor    := $FFFFFFFF;
+  ind_Entrega := '';
+  ind_Retira  := '';
+
+  if ALabel.tag = 0 then
+    ind_Entrega := 'S'
+  else
+    ind_Retira := 'S';
+
+  listarMercado;
 
   AnimationFiltro.StopValue := ALabel.Position.x;
   AnimationFiltro.Start;

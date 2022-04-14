@@ -69,7 +69,7 @@ begin
 
     if (LResp.StatusCode = 401) then
       raise Exception.Create('Usuário Não Autorizado')
-    else if (LResp.StatusCode <> 200) then
+    else if (LResp.StatusCode <> 201) then
       raise Exception.Create(LResp.Content);
   finally
     LJson.DisposeOf;
